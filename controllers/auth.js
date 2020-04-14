@@ -39,7 +39,7 @@ exports.signin = (req, res) => {
 
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
-            return  res.status(400).json({
+            return res.status(400).json({
                 error: 'user email does not exist'
             })
         }
@@ -50,21 +50,22 @@ exports.signin = (req, res) => {
             })
         }
         // create token
-        const token = jwt.sign({_id: user._id}, process.env.SECRET);
+        const token = jwt.sign({ _id: user._id }, process.env.SECRET);
 
         // put token in cookie
-        res.cookie('token', token, {expire: new Date() + 999});
+        res.cookie('token', token, { expire: new Date() + 999 });
 
         // send response to frontend
-        const {_id, name, email, role} = user;
+        const { _id, name, email, role } = user;
         return res.json({
             token,
-            user: {_id, name, email, role}
+            user: { _id, name, email, role }
         })
     })
 };
 
 exports.signout = (req, res) => {
+    res.clearCookie('token');
     res.json({
         message: 'User signout success'
     })
