@@ -39,10 +39,10 @@ var userSchema = new mongoose.Schema({
             default: []
         }
     },
-    {timestamps: true}
+    { timestamps: true }
 );
 
-userSchema.virtual("password")
+userSchema.virtual('password')
     .set(function (password) {
         this._password = password;
         this.salt = uuidv1();
@@ -71,4 +71,4 @@ userSchema.method = {
     }
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);
