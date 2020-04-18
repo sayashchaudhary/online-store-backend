@@ -23,3 +23,31 @@ exports.createCategory = (req, res) => {
 
     })
 };
+
+exports.getCategory = (req, res) => {
+    return res.json(req.category)
+};
+
+exports.getAllCategory = (req, res) => {
+    Category.find().exec((err, categories) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'No categories found'
+            })
+        }
+        res.json(categories)
+    })
+};
+
+exports.updateCategory = (req, res) => {
+    const category = req.category;
+    category.name = req.body.name;
+    category.save((err, updatedCategory) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Fail to update category'
+            })
+        }
+        res.json(updatedCategory)
+    })
+};
