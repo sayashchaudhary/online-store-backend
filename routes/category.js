@@ -29,6 +29,6 @@ router.get('/categories', getAllCategory);
 router.put('/category/:categoryId/:userId', isSignedIn, isAuthenticated, isAdmin, updateCategory);
 
 //delete
-router.put('/category/:categoryId/:userId', isSignedIn, isAuthenticated, isAdmin, removeCategory);
+router.delete('/category/:categoryId/:userId', isSignedIn, isAuthenticated, isAdmin, removeCategory);
 
 module.exports = router;
