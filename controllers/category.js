@@ -7,7 +7,8 @@ exports.getCategoryById = (req, res, next, id) => {
                 error: 'Category not found in db'
             })
         }
-        req.category = category
+        req.category = category;
+        next()
     })
 };
 
