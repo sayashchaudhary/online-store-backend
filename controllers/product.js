@@ -132,3 +132,22 @@ exports.updateProduct = (req, res) => {
         })
     })
 };
+
+//product listing
+exporst.getAllProduct = (req, res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 8;
+    let soryBy = req.query.sortBy ? req.query.sortBy : '_id';
+    Product.find()
+        .select('-photo')
+        .populate('category')
+        .sort([[sortBy, 'ascending']])
+        .limit(limit)
+        .exec((err, products) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'No product found'
+                })
+            }
+            res.json(products)
+        })
+};

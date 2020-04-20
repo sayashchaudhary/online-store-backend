@@ -9,7 +9,8 @@ const {
     getProduct,
     photo,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getAllProducts
 } = require('../controllers/product');
 
 //all of params
@@ -30,5 +31,8 @@ router.delete('/product/:productId/:userId', isSignedIn, isAuthenticated, isAdmi
 
 //update
 router.put('/product/:productId/:userId', isSignedIn, isAuthenticated, isAdmin, updateProduct);
+
+//listing
+router.get('/products/', getAllProducts);
 
 module.exports = router;
