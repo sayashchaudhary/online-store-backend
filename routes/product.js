@@ -11,3 +11,5 @@ router.param('productId', getProductById);
 
 //actual routes
 router.post('/product/create/:userId', isSignedIn, isAuthenticated, isAdmin, createProduct);
+
+module.exports = router;
