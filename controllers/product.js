@@ -134,7 +134,7 @@ exports.updateProduct = (req, res) => {
 };
 
 //product listing
-exporst.getAllProduct = (req, res) => {
+exports.getAllProducts = (req, res) => {
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
     let soryBy = req.query.sortBy ? req.query.sortBy : '_id';
     Product.find()

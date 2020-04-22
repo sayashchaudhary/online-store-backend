@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { isSignedIn, isAuthenticated, isAdmin } = require('../controllers/auth');
 const { getUserById, pushOrderInPurchaseList } = require('../controllers/user');
-const { updateStock } = require('../controllers/product');
+const { updateInventory } = require('../controllers/product');
 const { getOrderById, createOrder, getAllOrders, getOrderStatus, updateStatus } = require('../controllers/order');
 
 //params
@@ -18,7 +18,7 @@ router.post(
     isSignedIn,
     isAuthenticated,
     pushOrderInPurchaseList,
-    updateStock,
+    updateInventory,
     createOrder);
 
 //read
