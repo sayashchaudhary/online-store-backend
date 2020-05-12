@@ -4,4 +4,4 @@ const { makePayment } = require('../controllers/stripepayment');
 
 router.post('/stripepayment', makePayment);
 
-module.export = router;
+module.exports = router;
